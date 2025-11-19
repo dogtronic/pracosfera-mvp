@@ -1,35 +1,35 @@
-<!-- Sidebar Administratora -->
+<!-- Sidebar Franczyzobiorcy -->
 <style>
   .nav-link {
     transition: all 0.2s ease;
   }
   .nav-link:hover {
     background-color: rgba(
-      67,
-      56,
-      202,
+      20,
+      83,
+      45,
       1
-    ) !important; /* indigo-800 - ciemniejszy niż indigo-700 */
+    ) !important; /* green-800 - ciemniejszy niż green-700 */
   }
   .nav-link.active {
-    background-color: rgba(99, 102, 241, 1) !important; /* indigo-700 */
+    background-color: rgba(21, 128, 61, 1) !important; /* green-700 */
     font-weight: 600;
     border-left: 3px solid #ffffff;
     padding-left: 13px !important;
   }
   .nav-link.active:hover {
-    background-color: rgba(99, 102, 241, 1) !important;
+    background-color: rgba(21, 128, 61, 1) !important;
   }
 </style>
 <aside
   id="sidebar"
-  class="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-indigo-900 to-indigo-800 text-white transform transition-transform duration-300 ease-in-out z-40"
+  class="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-green-900 to-green-800 text-white transform transition-transform duration-300 ease-in-out z-40"
 >
   <div class="flex flex-col h-full">
     <!-- Logo i nagłówek -->
-    <div class="p-6 border-b border-indigo-700">
+    <div class="p-6 border-b border-green-700">
       <h1 class="text-2xl font-bold">Pracosfera</h1>
-      <p class="text-sm text-indigo-200 mt-1">Panel Administratora</p>
+      <p class="text-sm text-green-200 mt-1">Panel Franczyzobiorcy</p>
     </div>
 
     <!-- Nawigacja -->
@@ -59,31 +59,7 @@
           </a>
         </li>
 
-        <!-- Zarządzanie użytkownikami -->
-        <li>
-          <a
-            href="users.html"
-            class="nav-link flex items-center px-4 py-3 rounded-lg"
-            data-page="users"
-          >
-            <svg
-              class="w-5 h-5 mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            </svg>
-            <span>Użytkownicy</span>
-          </a>
-        </li>
-
-        <!-- Harmonogram / Zlecenia -->
+        <!-- Zamówienia -->
         <li>
           <a
             href="orders.html"
@@ -100,19 +76,19 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
               />
             </svg>
-            <span>Harmonogram</span>
+            <span>Zamówienia</span>
           </a>
         </li>
 
-        <!-- Zarządzanie usługami -->
+        <!-- Historia zleceń -->
         <li>
           <a
-            href="services.html"
+            href="history.html"
             class="nav-link flex items-center px-4 py-3 rounded-lg"
-            data-page="services"
+            data-page="history"
           >
             <svg
               class="w-5 h-5 mr-3"
@@ -124,19 +100,19 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span>Usługi</span>
+            <span>Historia zleceń</span>
           </a>
         </li>
 
-        <!-- Sklepy franczyzowe -->
-        <li>
+        <li class="pt-2 mt-2 border-t border-green-700">
+          <!-- Ocena usługi -->
           <a
-            href="stores.html"
+            href="evaluation.html"
             class="nav-link flex items-center px-4 py-3 rounded-lg"
-            data-page="stores"
+            data-page="evaluation"
           >
             <svg
               class="w-5 h-5 mr-3"
@@ -148,84 +124,58 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
               />
             </svg>
-            <span>Sklepy</span>
-          </a>
-        </li>
-
-        <li class="pt-2 mt-2 border-t border-indigo-700">
-          <a
-            href="reports.html"
-            class="nav-link flex items-center px-4 py-3 rounded-lg"
-            data-page="reports"
-          >
-            <svg
-              class="w-5 h-5 mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-            <span>Raporty</span>
-          </a>
-        </li>
-
-        <!-- Ustawienia -->
-        <li>
-          <a
-            href="settings.html"
-            class="nav-link flex items-center px-4 py-3 rounded-lg"
-            data-page="settings"
-          >
-            <svg
-              class="w-5 h-5 mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-            <span>Ustawienia</span>
+            <span>Ocena usługi</span>
           </a>
         </li>
       </ul>
     </nav>
 
     <!-- Użytkownik i wylogowanie -->
-    <div class="p-4 border-t border-indigo-700">
+    <div class="p-4 border-t border-green-700">
       <div class="flex items-center mb-3">
         <div
-          class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center"
+          class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center"
         >
-          <span class="text-lg font-semibold">A</span>
+          <span class="text-lg font-semibold">F</span>
         </div>
-        <div class="ml-3">
-          <p class="text-sm font-semibold">Administrator</p>
-          <p class="text-xs text-indigo-300">admin@pracosfera.pl</p>
+        <div class="ml-3 flex-1">
+          <p class="text-sm font-semibold">Franczyzobiorca</p>
+          <p class="text-xs text-green-300" id="franchiseeEmail">
+            franchisee@pracosfera.pl
+          </p>
         </div>
+        <button
+          onclick="openSettingsModal()"
+          class="p-2 hover:bg-green-700 rounded-lg transition"
+          title="Ustawienia"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
+        </button>
       </div>
       <button
         onclick="logout()"
-        class="w-full flex items-center justify-center px-4 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-lg transition"
+        class="w-full flex items-center justify-center px-4 py-2 bg-green-700 hover:bg-green-600 rounded-lg transition"
       >
         <svg
           class="w-5 h-5 mr-2"
@@ -249,7 +199,7 @@
 <!-- Przycisk mobile menu -->
 <button
   id="mobileMenuBtn"
-  class="fixed top-4 left-4 z-50 lg:hidden bg-indigo-600 text-white p-3 rounded-lg shadow-lg"
+  class="fixed top-4 left-4 z-50 lg:hidden bg-green-600 text-white p-3 rounded-lg shadow-lg"
 >
   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
@@ -268,7 +218,7 @@
     let currentPage = window.location.pathname.split("/").pop();
 
     // Jeśli nie ma nazwy pliku, sprawdź hash lub ustaw domyślnie
-    if (!currentPage || currentPage === "" || currentPage === "admin") {
+    if (!currentPage || currentPage === "" || currentPage === "franchisee") {
       currentPage = "dashboard.html";
     }
 
@@ -280,12 +230,20 @@
       currentPage = "dashboard";
     }
 
+    // Debug - można usunąć później
+    console.log("Aktualna strona:", currentPage);
+
     const links = document.querySelectorAll(".nav-link");
+    console.log("Znaleziono linków:", links.length);
+
     links.forEach((link) => {
       const linkPage = link.dataset.page;
+      console.log("Link:", linkPage, "vs Current:", currentPage);
+
       if (linkPage === currentPage) {
         // Dodaj klasę aktywnego linku
         link.classList.add("active");
+        console.log("Aktywowano link:", linkPage);
       } else {
         // Usuń klasę aktywnego linku
         link.classList.remove("active");
@@ -324,5 +282,22 @@
         window.setActiveNavLink();
       }
     }, 50);
+
+    // Załaduj komponent ustawień
+    fetch("../../components/franchisee/settings.html")
+      .then((response) => response.text())
+      .then((data) => {
+        const settingsContainer = document.createElement("div");
+        settingsContainer.innerHTML = data;
+        document.body.appendChild(settingsContainer);
+
+        // Wykonaj skrypty z załadowanego HTML
+        const scripts = settingsContainer.querySelectorAll("script");
+        scripts.forEach((script) => {
+          const newScript = document.createElement("script");
+          newScript.textContent = script.textContent;
+          document.body.appendChild(newScript);
+        });
+      });
   });
 </script>

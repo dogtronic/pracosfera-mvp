@@ -360,6 +360,13 @@
                     newScript.textContent = script.textContent;
                     document.body.appendChild(newScript);
                 });
+                
+                // Po załadowaniu sidebara, ustaw aktywny link
+                setTimeout(() => {
+                    if (window.setActiveNavLink) {
+                        window.setActiveNavLink();
+                    }
+                }, 100);
             });
 
         // Modal functions

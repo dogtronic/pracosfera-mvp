@@ -1,0 +1,211 @@
+<!-- Settings Modal Component -->
+<div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div class="p-6 border-b border-gray-200 sticky top-0 bg-white z-10">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xl font-bold text-gray-800">Ustawienia</h2>
+                <button onclick="closeSettingsModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="p-6">
+            <!-- Dane sklepu (tylko dla franczyzobiorcy) -->
+            <div id="storeDataSection" class="mb-6">
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Dane sklepu</h3>
+                    <form id="storeForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nazwa sklepu *</label>
+                            <input type="text" id="storeName" value="Żabka ul. Główna 12" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Numer MPK *</label>
+                            <input type="text" id="storeMPK" value="MPK-1234" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            <p class="text-xs text-gray-500 mt-1">Unikalny numer identyfikacyjny sklepu</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Adres *</label>
+                            <input type="text" id="storeAddress" value="ul. Główna 12" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 mb-2">
+                            <input type="text" id="storePostal" value="50-001 Wrocław" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        
+                        <div class="flex justify-end">
+                            <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Zapisz zmiany</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dane kontaktowe -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Dane kontaktowe osoby odpowiedzialnej</h3>
+                <form id="contactForm" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Imię *</label>
+                            <input type="text" id="contactFirstName" value="Jan" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nazwisko *</label>
+                            <input type="text" id="contactLastName" value="Kowalski" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Telefon *</label>
+                        <input type="tel" id="contactPhone" value="+48 123 456 789" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
+                        <input type="email" id="contactEmail" value="jan.kowalski@example.pl" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <p class="text-xs text-gray-500 mt-1">Ten adres e-mail jest używany do logowania</p>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Zapisz zmiany</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Zmiana hasła -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Zmiana hasła</h3>
+                <form id="passwordForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Obecne hasło *</label>
+                        <input type="password" id="currentPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nowe hasło *</label>
+                        <input type="password" id="newPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <p class="text-xs text-gray-500 mt-1">Minimum 8 znaków</p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Potwierdź nowe hasło *</label>
+                        <input type="password" id="confirmPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Zmień hasło</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Powiadomienia -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Powiadomienia</h3>
+                <form id="notificationsForm" class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-700">Powiadomienia e-mail</p>
+                            <p class="text-xs text-gray-500">Otrzymuj powiadomienia o statusie zleceń</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="emailNotifications" checked class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                        </label>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-700">Powiadomienia SMS</p>
+                            <p class="text-xs text-gray-500">Otrzymuj powiadomienia SMS o przypisaniu pracownika</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="smsNotifications" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                        </label>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Zapisz zmiany</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Funkcje globalne dla ustawień
+    window.openSettingsModal = function() {
+        const modal = document.getElementById('settingsModal');
+        modal.classList.remove('hidden');
+    }
+
+    window.closeSettingsModal = function() {
+        document.getElementById('settingsModal').classList.add('hidden');
+    }
+
+    // Zamknij modal po kliknięciu w tło
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('settingsModal');
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeSettingsModal();
+                }
+            });
+        }
+
+        // Form submissions
+        const storeForm = document.getElementById('storeForm');
+        if (storeForm) {
+            storeForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Dane sklepu zostały zaktualizowane');
+                closeSettingsModal();
+            });
+        }
+
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Dane kontaktowe zostały zaktualizowane');
+                closeSettingsModal();
+            });
+        }
+
+        const passwordForm = document.getElementById('passwordForm');
+        if (passwordForm) {
+            passwordForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (newPassword !== confirmPassword) {
+                    alert('Hasła nie są identyczne');
+                    return;
+                }
+                
+                if (newPassword.length < 8) {
+                    alert('Hasło musi mieć minimum 8 znaków');
+                    return;
+                }
+                
+                alert('Hasło zostało zmienione');
+                closeSettingsModal();
+            });
+        }
+
+        const notificationsForm = document.getElementById('notificationsForm');
+        if (notificationsForm) {
+            notificationsForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Ustawienia powiadomień zostały zapisane');
+                closeSettingsModal();
+            });
+        }
+    });
+</script>
+
