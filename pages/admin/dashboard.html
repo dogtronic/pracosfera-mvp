@@ -18,23 +18,7 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
-                        <p class="text-sm text-gray-600 mt-1">Witaj w panelu administratora Agencji Pracy Tymczasowej</p>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <!-- Filtr czasowy -->
-                        <select id="timeFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                            <option value="today">Dzisiaj</option>
-                            <option value="week" selected>Ten tydzień</option>
-                            <option value="month">Ten miesiąc</option>
-                            <option value="year">Ten rok</option>
-                        </select>
-                        <!-- Odświeżanie -->
-                        <button onclick="refreshDashboard()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                            </svg>
-                            Odśwież
-                        </button>
+                        <p class="text-sm text-gray-600 mt-1">Witaj w panelu administratora</p>
                     </div>
                 </div>
             </div>
@@ -50,12 +34,6 @@
                         <div>
                             <p class="text-sm text-gray-600 font-medium">Zlecenia w tym tygodniu</p>
                             <h3 class="text-3xl font-bold text-gray-800 mt-2">47</h3>
-                            <p class="text-sm text-green-600 mt-2 flex items-center">
-                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                                </svg>
-                                +12% vs poprzedni tydzień
-                            </p>
                         </div>
                         <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center">
                             <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,7 +49,6 @@
                         <div>
                             <p class="text-sm text-gray-600 font-medium">Aktywni pracownicy</p>
                             <h3 class="text-3xl font-bold text-gray-800 mt-2">23</h3>
-                            <p class="text-sm text-gray-500 mt-2">/ 28 wszystkich</p>
                         </div>
                         <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center">
                             <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,7 +64,6 @@
                         <div>
                             <p class="text-sm text-gray-600 font-medium">Sklepy franczyzowe</p>
                             <h3 class="text-3xl font-bold text-gray-800 mt-2">15</h3>
-                            <p class="text-sm text-indigo-600 mt-2">Wrocław - pilotaż</p>
                         </div>
                         <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center">
                             <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -200,18 +176,6 @@
                 });
             });
 
-        // Refresh Dashboard
-        function refreshDashboard() {
-            // W rzeczywistej aplikacji tutaj byłoby pobieranie danych z API
-            alert('Odświeżanie danych...');
-            location.reload();
-        }
-
-        // Time Filter Change
-        document.getElementById('timeFilter').addEventListener('change', function() {
-            // W rzeczywistej aplikacji tutaj byłaby aktualizacja danych
-            console.log('Zmiana filtra na:', this.value);
-        });
     </script>
 </body>
 </html>
