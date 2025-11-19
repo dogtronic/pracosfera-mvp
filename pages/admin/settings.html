@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ustawienia - Pracosfera Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div id="sidebarContainer"></div>
+
+    <!-- Main Content -->
+    <div class="lg:ml-64 min-h-screen">
+        <!-- Top Bar -->
+        <header class="bg-white shadow-sm sticky top-0 z-30">
+            <div class="px-6 py-4">
+                <h1 class="text-2xl font-bold text-gray-800">Ustawienia</h1>
+                <p class="text-sm text-gray-600 mt-1">Konfiguracja systemu i preferencje</p>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <main class="p-6">
+            <div class="max-w-4xl">
+                <!-- General Settings -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">Ustawienia ogólne</h3>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nazwa agencji</label>
+                            <input type="text" value="Pracosfera - Agencja Pracy Tymczasowej" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email kontaktowy</label>
+                            <input type="email" value="kontakt@pracosfera.pl" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefon kontaktowy</label>
+                            <input type="tel" value="+48 71 123 4567" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Miasto pilotażu</label>
+                            <input type="text" value="Wrocław" readonly class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50">
+                            <p class="text-xs text-gray-500 mt-1">Projekt pilotażowy - zmiana miasta niedostępna</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Settings -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">Ustawienia zleceń</h3>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Minimalny czas zamówienia z wyprzedzeniem (godziny)</label>
+                            <input type="number" value="48" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            <p class="text-xs text-gray-500 mt-1">Franczyzobiorca musi złożyć zamówienie minimum X godzin przed planowanym terminem</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Minimalny czas trwania zlecenia (godziny)</label>
+                            <input type="number" value="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Maksymalny czas trwania zlecenia (godziny)</label>
+                            <input type="number" value="8" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-gray-700">Automatyczne przypisywanie pracowników</span>
+                            </label>
+                            <p class="text-xs text-gray-500 mt-1 ml-6">System automatycznie przypisze dostępnego pracownika do zlecenia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-800">Powiadomienia</h3>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-gray-700">Email przy nowym zleceniu</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-gray-700">SMS przy nowym zleceniu</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-gray-700">Powiadomienia o opóźnieniach</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-gray-700">Dzienny raport email</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Button -->
+                <div class="flex justify-end">
+                    <button onclick="saveSettings()" class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                        Zapisz ustawienia
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Load Sidebar
+        fetch('/components/admin/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                const container = document.getElementById('sidebarContainer');
+                container.innerHTML = data;
+                
+                // Wykonaj skrypty z załadowanego HTML
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = script.textContent;
+                    document.body.appendChild(newScript);
+                });
+            });
+
+        function saveSettings() {
+            alert('Ustawienia zostały zapisane');
+        }
+    </script>
+</body>
+</html>
+

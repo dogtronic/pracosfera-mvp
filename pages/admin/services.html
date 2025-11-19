@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarządzanie usługami - Pracosfera Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div id="sidebarContainer"></div>
+
+    <!-- Main Content -->
+    <div class="lg:ml-64 min-h-screen">
+        <!-- Top Bar -->
+        <header class="bg-white shadow-sm sticky top-0 z-30">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Zarządzanie usługami</h1>
+                        <p class="text-sm text-gray-600 mt-1">Definiuj typy pracy i ustaw parametry czasowe</p>
+                    </div>
+                    <button onclick="openAddServiceModal()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Dodaj usługę
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <main class="p-6">
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+                    <p class="text-sm text-gray-600">Wszystkie usługi</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">8</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+                    <p class="text-sm text-gray-600">Aktywne</p>
+                    <h3 class="text-2xl font-bold text-green-600 mt-2">6</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+                    <p class="text-sm text-gray-600">Nieaktywne</p>
+                    <h3 class="text-2xl font-bold text-gray-600 mt-2">2</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+                    <p class="text-sm text-gray-600">Średni czas pracy</p>
+                    <h3 class="text-2xl font-bold text-indigo-600 mt-2">5.5h</h3>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Wyszukaj</label>
+                        <input type="text" placeholder="Szukaj usługi..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="">Wszystkie</option>
+                            <option value="active">Aktywne</option>
+                            <option value="inactive">Nieaktywne</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aktywna</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Praca w sklepie - pełen etat</h3>
+                        <p class="text-sm text-gray-600 mb-4">Obsługa klienta, ekspozycja towaru, utrzymanie czystości</p>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Czas trwania:</span>
+                                <span class="font-semibold text-gray-800">8 godzin</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Stawka podstawowa:</span>
+                                <span class="font-semibold text-gray-800">30 zł/h</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Wykorzystanych:</span>
+                                <span class="font-semibold text-indigo-600">35 razy</span>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-2">
+                            <button onclick="editService(1)" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm">
+                                Edytuj
+                            </button>
+                            <button onclick="toggleServiceStatus(1)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                                </svg>
+                            </button>
+                            <button onclick="deleteService(1)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aktywna</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Praca w sklepie - pół etatu</h3>
+                        <p class="text-sm text-gray-600 mb-4">Obsługa klienta, ekspozycja towaru w skróconym wymiarze</p>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Czas trwania:</span>
+                                <span class="font-semibold text-gray-800">4 godziny</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Stawka podstawowa:</span>
+                                <span class="font-semibold text-gray-800">30 zł/h</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Wykorzystanych:</span>
+                                <span class="font-semibold text-indigo-600">22 razy</span>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-2">
+                            <button onclick="editService(2)" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm">
+                                Edytuj
+                            </button>
+                            <button onclick="toggleServiceStatus(2)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                                </svg>
+                            </button>
+                            <button onclick="deleteService(2)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                            </div>
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Aktywna</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Przyjęcie towaru i magazyn</h3>
+                        <p class="text-sm text-gray-600 mb-4">Rozładunek, przyjęcie dostawy, uzupełnienie magazynu</p>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Czas trwania:</span>
+                                <span class="font-semibold text-gray-800">6 godzin</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Stawka podstawowa:</span>
+                                <span class="font-semibold text-gray-800">32 zł/h</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Wykorzystanych:</span>
+                                <span class="font-semibold text-indigo-600">18 razy</span>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-2">
+                            <button onclick="editService(3)" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm">
+                                Edytuj
+                            </button>
+                            <button onclick="toggleServiceStatus(3)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                                </svg>
+                            </button>
+                            <button onclick="deleteService(3)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 - Inactive -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition opacity-75">
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                </svg>
+                            </div>
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">Nieaktywna</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Inwentaryzacja</h3>
+                        <p class="text-sm text-gray-600 mb-4">Przeprowadzenie inwentaryzacji towarów w sklepie</p>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Czas trwania:</span>
+                                <span class="font-semibold text-gray-800">8 godzin</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Stawka podstawowa:</span>
+                                <span class="font-semibold text-gray-800">35 zł/h</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-gray-600">Wykorzystanych:</span>
+                                <span class="font-semibold text-indigo-600">8 razy</span>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-2">
+                            <button onclick="editService(4)" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-sm">
+                                Edytuj
+                            </button>
+                            <button onclick="toggleServiceStatus(4)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </button>
+                            <button onclick="deleteService(4)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Service Modal -->
+    <div id="serviceModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-gray-800" id="modalTitle">Dodaj usługę</h2>
+                    <button onclick="closeServiceModal()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <form id="serviceForm" class="p-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nazwa usługi *</label>
+                        <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="np. Praca w sklepie - pełen etat">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Opis</label>
+                        <textarea rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Krótki opis usługi..."></textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Czas trwania (godziny) *</label>
+                            <select required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <option value="">Wybierz</option>
+                                <option value="2">2 godziny</option>
+                                <option value="3">3 godziny</option>
+                                <option value="4">4 godziny</option>
+                                <option value="5">5 godzin</option>
+                                <option value="6">6 godzin</option>
+                                <option value="7">7 godzin</option>
+                                <option value="8">8 godzin</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Stawka (zł/h)</label>
+                            <input type="number" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="30.00">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Kategoria</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="">Wybierz kategorię</option>
+                            <option value="store">Obsługa sklepu</option>
+                            <option value="warehouse">Magazyn</option>
+                            <option value="inventory">Inwentaryzacja</option>
+                            <option value="other">Inne</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Wymagane kompetencje</label>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full flex items-center">
+                                Obsługa kasy
+                                <button type="button" class="ml-2 text-indigo-600 hover:text-indigo-800">×</button>
+                            </span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full flex items-center">
+                                Obsługa klienta
+                                <button type="button" class="ml-2 text-indigo-600 hover:text-indigo-800">×</button>
+                            </span>
+                        </div>
+                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Dodaj kompetencję i naciśnij Enter">
+                    </div>
+                    <div>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" checked>
+                            <span class="ml-2 text-sm text-gray-700">Usługa aktywna</span>
+                        </label>
+                        <p class="text-xs text-gray-500 mt-1">Nieaktywne usługi nie będą widoczne przy tworzeniu zleceń</p>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button type="button" onclick="closeServiceModal()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">Anuluj</button>
+                    <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">Zapisz usługę</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Load Sidebar
+        fetch('/components/admin/sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                const container = document.getElementById('sidebarContainer');
+                container.innerHTML = data;
+                
+                // Wykonaj skrypty z załadowanego HTML
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = script.textContent;
+                    document.body.appendChild(newScript);
+                });
+            });
+
+        // Modal functions
+        function openAddServiceModal() {
+            document.getElementById('modalTitle').textContent = 'Dodaj usługę';
+            document.getElementById('serviceModal').classList.remove('hidden');
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.add('hidden');
+            document.getElementById('serviceForm').reset();
+        }
+
+        function editService(id) {
+            document.getElementById('modalTitle').textContent = 'Edytuj usługę';
+            document.getElementById('serviceModal').classList.remove('hidden');
+            // Load service data here
+        }
+
+        function toggleServiceStatus(id) {
+            if (confirm('Czy na pewno chcesz zmienić status tej usługi?')) {
+                alert('Status usługi został zmieniony');
+            }
+        }
+
+        function deleteService(id) {
+            if (confirm('Czy na pewno chcesz usunąć tę usługę? Ta operacja jest nieodwracalna!')) {
+                alert('Usługa została usunięta');
+            }
+        }
+
+        // Form submit
+        document.getElementById('serviceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Usługa została zapisana');
+            closeServiceModal();
+        });
+    </script>
+</body>
+</html>
+
