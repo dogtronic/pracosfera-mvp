@@ -222,7 +222,7 @@
     <script>
       let selectedUserType = null;
 
-      // Dane logowania dla admin i franczyzobiorcy
+      // Dane logowania dla admin, franczyzobiorcy i pracownika
       const loginCredentials = {
         admin: {
           email: "admin@pracosfera.pl",
@@ -230,6 +230,10 @@
         },
         franchisee: {
           email: "franczyzobiorca@pracosfera.pl",
+          password: "Prac0sf3r@MvP!2024"
+        },
+        worker: {
+          email: "pracownik@pracosfera.pl",
           password: "Prac0sf3r@MvP!2024"
         }
       };
@@ -263,8 +267,8 @@
         // Ukryj poprzedni błąd
         errorMessage.classList.add("hidden");
 
-        // Weryfikacja danych logowania dla admin i franczyzobiorcy
-        if (selectedUserType === "admin" || selectedUserType === "franchisee") {
+        // Weryfikacja danych logowania dla wszystkich typów użytkowników
+        if (selectedUserType === "admin" || selectedUserType === "franchisee" || selectedUserType === "worker") {
           const credentials = loginCredentials[selectedUserType];
           
           if (email !== credentials.email || password !== credentials.password) {
@@ -273,22 +277,22 @@
           }
         }
 
-        // Dla pracownika (worker) - na razie bez weryfikacji
-        // W przyszłości można dodać weryfikację również tutaj
-
         console.log("Logowanie jako:", selectedUserType);
         console.log("Email:", email);
 
         // Przekierowanie do odpowiedniego panelu
+        // Używamy ścieżek względnych, które działają zarówno lokalnie jak i na GitHub Pages
         const redirectPaths = {
-          admin: "pages/admin/dashboard.html",
-          franchisee: "pages/franchisee/dashboard.html",
-          worker: "pages/worker/dashboard.html",
+          admin: "./pages/admin/dashboard.html",
+          franchisee: "./pages/franchisee/dashboard.html",
+          worker: "./pages/worker/dashboard.html",
         };
 
         // Symulacja opóźnienia logowania
         setTimeout(() => {
-          window.location.href = redirectPaths[selectedUserType];
+          const path = redirectPaths[selectedUserType];
+          console.log("Przekierowanie do:", path);
+          window.location.href = path;
         }, 500);
       }
 

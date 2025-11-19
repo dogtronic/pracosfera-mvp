@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dostępne zlecenia - Pracosfera Pracownik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div id="sidebarContainer"></div>
+
+    <!-- Main Content -->
+    <div class="lg:ml-64 min-h-screen">
+        <!-- Top Bar -->
+        <header class="bg-white shadow-sm sticky top-0 z-30">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Dostępne zlecenia</h1>
+                        <p class="text-sm text-gray-600 mt-1">Przeglądaj i przyjmuj dostępne zlecenia</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <main class="p-6">
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-amber-500 rounded-full mr-2"></div>
+                        <p class="text-sm text-gray-600">Dostępne</p>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">12</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                        <p class="text-sm text-gray-600">Zaakceptowane</p>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">3</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <p class="text-sm text-gray-600">Zrealizowane</p>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">28</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+                        <p class="text-sm text-gray-600">Ten miesiąc</p>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mt-2">31</h3>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Data</label>
+                        <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Czas trwania</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                            <option value="">Wszystkie</option>
+                            <option value="2">2 godziny</option>
+                            <option value="4">4 godziny</option>
+                            <option value="6">6 godzin</option>
+                            <option value="8">8 godzin</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Lokalizacja</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                            <option value="">Wszystkie</option>
+                            <option value="wroclaw">Wrocław</option>
+                            <option value="warszawa">Warszawa</option>
+                            <option value="krakow">Kraków</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Szukaj</label>
+                        <input type="text" placeholder="ID zlecenia, sklep..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders List -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sklep</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data i godzina</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Czas trwania</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Akcje</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <!-- Order 1 - Available -->
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">#ORD001</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900 font-medium">MPK-1234</div>
+                                    <div class="text-xs text-gray-500">ul. Główna 12, Wrocław</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">20.11.2025</div>
+                                    <div class="text-xs text-gray-500">08:00 - 16:00</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">8 godzin</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-amber-100 text-amber-800">Dostępne</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <button onclick="acceptOrder(1)" class="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition mr-2">
+                                        Przyjmij zlecenie
+                                    </button>
+                                    <button onclick="viewOrderDetails(1)" class="text-gray-600 hover:text-gray-900">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 2 - Available -->
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">#ORD002</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900 font-medium">MPK-5678</div>
+                                    <div class="text-xs text-gray-500">ul. Przykładowa 45, Wrocław</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">22.11.2025</div>
+                                    <div class="text-xs text-gray-500">10:00 - 14:00</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">4 godziny</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-amber-100 text-amber-800">Dostępne</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <button onclick="acceptOrder(2)" class="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition mr-2">
+                                        Przyjmij zlecenie
+                                    </button>
+                                    <button onclick="viewOrderDetails(2)" class="text-gray-600 hover:text-gray-900">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 3 - Accepted -->
+                            <tr class="hover:bg-gray-50 bg-yellow-50">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">#ORD003</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900 font-medium">MPK-9012</div>
+                                    <div class="text-xs text-gray-500">ul. Testowa 78, Wrocław</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">19.11.2025</div>
+                                    <div class="text-xs text-gray-500">06:00 - 14:00</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">8 godzin</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Zaakceptowane</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <button onclick="viewOrderDetails(3)" class="text-gray-600 hover:text-gray-900">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <!-- Order 4 - Available -->
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">#ORD004</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900 font-medium">MPK-1234</div>
+                                    <div class="text-xs text-gray-500">ul. Główna 12, Wrocław</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">25.11.2025</div>
+                                    <div class="text-xs text-gray-500">09:00 - 15:00</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">6 godzin</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-amber-100 text-amber-800">Dostępne</span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <button onclick="acceptOrder(4)" class="px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition mr-2">
+                                        Przyjmij zlecenie
+                                    </button>
+                                    <button onclick="viewOrderDetails(4)" class="text-gray-600 hover:text-gray-900">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="bg-gray-50 px-6 py-4 flex items-center justify-between border-t border-gray-200">
+                    <div class="text-sm text-gray-700">
+                        Pokazuję <span class="font-medium">1</span> do <span class="font-medium">10</span> z <span class="font-medium">12</span> zleceń
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-100">Poprzednia</button>
+                        <button class="px-3 py-1 bg-amber-600 text-white rounded-lg text-sm">1</button>
+                        <button class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-100">2</button>
+                        <button class="px-3 py-1 border border-gray-300 rounded-lg text-sm hover:bg-gray-100">Następna</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="orderDetailsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-gray-800">Szczegóły zlecenia</h2>
+                    <button onclick="closeOrderDetailsModal()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6" id="orderDetailsContent">
+                <!-- Szczegóły zlecenia będą tutaj -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load Sidebar
+        fetch('../../components/worker/sidebar.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                const container = document.getElementById('sidebarContainer');
+                container.innerHTML = data;
+                
+                // Wykonaj skrypty z załadowanego HTML
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = script.textContent;
+                    document.body.appendChild(newScript);
+                });
+                
+                // Po załadowaniu sidebara, ustaw aktywny link
+                setTimeout(() => {
+                    if (window.setActiveNavLink) {
+                        window.setActiveNavLink();
+                    }
+                }, 100);
+            })
+            .catch(error => {
+                console.error('Error loading sidebar:', error);
+                // Fallback - wyświetl komunikat błędu
+                const container = document.getElementById('sidebarContainer');
+                container.innerHTML = '<div class="p-4 text-red-600">Błąd ładowania sidebara</div>';
+            });
+
+        // Accept order
+        function acceptOrder(id) {
+            if (confirm('Czy na pewno chcesz przyjąć to zlecenie?')) {
+                // Tutaj można dodać logikę akceptacji zlecenia
+                alert('Zlecenie #' + id + ' zostało przyjęte pomyślnie!');
+                // Odśwież stronę lub zaktualizuj status w tabeli
+                location.reload();
+            }
+        }
+
+        // View order details
+        function viewOrderDetails(id) {
+            const modal = document.getElementById('orderDetailsModal');
+            const content = document.getElementById('orderDetailsContent');
+            
+            // Przykładowe dane zlecenia
+            const orderDetails = {
+                1: {
+                    id: '#ORD001',
+                    shop: 'MPK-1234',
+                    address: 'ul. Główna 12, Wrocław',
+                    date: '20.11.2025',
+                    time: '08:00 - 16:00',
+                    duration: '8 godzin',
+                    status: 'Dostępne',
+                    notes: 'Brak dodatkowych uwag'
+                },
+                2: {
+                    id: '#ORD002',
+                    shop: 'MPK-5678',
+                    address: 'ul. Przykładowa 45, Wrocław',
+                    date: '22.11.2025',
+                    time: '10:00 - 14:00',
+                    duration: '4 godziny',
+                    status: 'Dostępne',
+                    notes: 'Wymagana znajomość podstawowych narzędzi'
+                },
+                3: {
+                    id: '#ORD003',
+                    shop: 'MPK-9012',
+                    address: 'ul. Testowa 78, Wrocław',
+                    date: '19.11.2025',
+                    time: '06:00 - 14:00',
+                    duration: '8 godzin',
+                    status: 'Zaakceptowane',
+                    notes: 'Zlecenie już przyjęte'
+                },
+                4: {
+                    id: '#ORD004',
+                    shop: 'MPK-1234',
+                    address: 'ul. Główna 12, Wrocław',
+                    date: '25.11.2025',
+                    time: '09:00 - 15:00',
+                    duration: '6 godzin',
+                    status: 'Dostępne',
+                    notes: 'Brak dodatkowych uwag'
+                }
+            };
+
+            const order = orderDetails[id] || orderDetails[1];
+            
+            content.innerHTML = `
+                <div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">ID Zlecenia</label>
+                            <p class="text-sm text-gray-900">${order.id}</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full ${order.status === 'Dostępne' ? 'bg-amber-100 text-amber-800' : 'bg-yellow-100 text-yellow-800'}">${order.status}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Sklep</label>
+                        <p class="text-sm text-gray-900">${order.shop}</p>
+                        <p class="text-xs text-gray-500">${order.address}</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Data</label>
+                            <p class="text-sm text-gray-900">${order.date}</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Godziny</label>
+                            <p class="text-sm text-gray-900">${order.time}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Czas trwania</label>
+                        <p class="text-sm text-gray-900">${order.duration}</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Uwagi</label>
+                        <p class="text-sm text-gray-900">${order.notes}</p>
+                    </div>
+                    ${order.status === 'Dostępne' ? `
+                    <div class="pt-4 border-t border-gray-200">
+                        <button onclick="acceptOrder(${id}); closeOrderDetailsModal();" class="w-full px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition">
+                            Przyjmij zlecenie
+                        </button>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Close order details modal
+        function closeOrderDetailsModal() {
+            document.getElementById('orderDetailsModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
+

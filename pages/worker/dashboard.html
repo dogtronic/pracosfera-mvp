@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Pracosfera Pracownik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div id="sidebarContainer"></div>
+
+    <!-- Main Content -->
+    <div class="lg:ml-64 min-h-screen">
+        <!-- Top Bar -->
+        <header class="bg-white shadow-sm sticky top-0 z-30">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+                        <p class="text-sm text-gray-600 mt-1">Witaj w panelu pracownika</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <main class="p-6">
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <!-- Available Orders -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600 font-medium">Dostępne zlecenia</p>
+                            <h3 class="text-3xl font-bold text-gray-800 mt-2">12</h3>
+                        </div>
+                        <div class="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accepted Orders -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600 font-medium">Zaakceptowane</p>
+                            <h3 class="text-3xl font-bold text-gray-800 mt-2">3</h3>
+                        </div>
+                        <div class="w-14 h-14 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Orders -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600 font-medium">Zrealizowane</p>
+                            <h3 class="text-3xl font-bold text-gray-800 mt-2">28</h3>
+                        </div>
+                        <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- This Month -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-600 font-medium">Ten miesiąc</p>
+                            <h3 class="text-3xl font-bold text-gray-800 mt-2">31</h3>
+                        </div>
+                        <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Orders and Quick Actions -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <!-- Upcoming Orders -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">Nadchodzące zlecenia</h3>
+                        <a href="orders.html" class="text-sm text-amber-600 hover:text-amber-800">Zobacz wszystkie</a>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Order Item -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <span class="text-sm font-medium text-gray-900">#ORD003</span>
+                                    <span class="ml-2 px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Zaakceptowane</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">MPK-9012 - ul. Testowa 78, Wrocław</p>
+                                <p class="text-xs text-gray-500 mt-1">19.11.2025, 06:00 - 14:00</p>
+                            </div>
+                        </div>
+
+                        <!-- Order Item -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <span class="text-sm font-medium text-gray-900">#ORD001</span>
+                                    <span class="ml-2 px-2 py-1 text-xs font-semibold rounded-full bg-amber-100 text-amber-800">Dostępne</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-1">MPK-1234 - ul. Główna 12, Wrocław</p>
+                                <p class="text-xs text-gray-500 mt-1">20.11.2025, 08:00 - 16:00</p>
+                            </div>
+                            <button onclick="window.location.href='orders.html'" class="ml-4 px-3 py-1 bg-amber-600 text-white text-sm rounded-lg hover:bg-amber-700 transition">
+                                Przyjmij
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Szybkie akcje</h3>
+                    <div class="space-y-3">
+                        <a href="orders.html" class="flex items-center p-4 bg-amber-50 hover:bg-amber-100 rounded-lg transition">
+                            <svg class="w-6 h-6 text-amber-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">Przeglądaj dostępne zlecenia</p>
+                                <p class="text-xs text-gray-500">Zobacz wszystkie dostępne zlecenia i przyjmij nowe</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Load Sidebar
+        fetch('../../components/worker/sidebar.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                const container = document.getElementById('sidebarContainer');
+                container.innerHTML = data;
+                
+                // Wykonaj skrypty z załadowanego HTML
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(script => {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = script.textContent;
+                    document.body.appendChild(newScript);
+                });
+                
+                // Po załadowaniu sidebara, ustaw aktywny link
+                setTimeout(() => {
+                    if (window.setActiveNavLink) {
+                        window.setActiveNavLink();
+                    }
+                }, 100);
+            })
+            .catch(error => {
+                console.error('Error loading sidebar:', error);
+                // Fallback - wyświetl komunikat błędu
+                const container = document.getElementById('sidebarContainer');
+                container.innerHTML = '<div class="p-4 text-red-600">Błąd ładowania sidebara</div>';
+            });
+    </script>
+</body>
+</html>
+
