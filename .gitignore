@@ -1,0 +1,46 @@
+# System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build outputs (jeśli będziesz używać build tools)
+dist/
+build/
+out/
+
+# Dependencies (jeśli dodasz npm/yarn)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Backup files
+*.bak
+*.backup
+
