@@ -222,6 +222,18 @@
     <script>
       let selectedUserType = null;
 
+      // Dane logowania dla admin i franczyzobiorcy
+      const loginCredentials = {
+        admin: {
+          email: "admin@pracosfera.pl",
+          password: "Prac0sf3r@MvP!2024"
+        },
+        franchisee: {
+          email: "franczyzobiorca@pracosfera.pl",
+          password: "Prac0sf3r@MvP!2024"
+        }
+      };
+
       // Wybór typu użytkownika
       function selectUserType(type, element) {
         // Usuń zaznaczenie z wszystkich kart
@@ -238,7 +250,7 @@
       function handleLogin(event) {
         event.preventDefault();
 
-        const email = document.getElementById("email").value;
+        const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
         const errorMessage = document.getElementById("errorMessage");
 
@@ -251,11 +263,21 @@
         // Ukryj poprzedni błąd
         errorMessage.classList.add("hidden");
 
-        // Symulacja logowania - tutaj dodasz prawdziwą logikę
-        // Na razie przekierowujemy do odpowiedniego panelu
+        // Weryfikacja danych logowania dla admin i franczyzobiorcy
+        if (selectedUserType === "admin" || selectedUserType === "franchisee") {
+          const credentials = loginCredentials[selectedUserType];
+          
+          if (email !== credentials.email || password !== credentials.password) {
+            showError("Nieprawidłowy email lub hasło");
+            return;
+          }
+        }
+
+        // Dla pracownika (worker) - na razie bez weryfikacji
+        // W przyszłości można dodać weryfikację również tutaj
+
         console.log("Logowanie jako:", selectedUserType);
         console.log("Email:", email);
-        console.log("Hasło:", password);
 
         // Przekierowanie do odpowiedniego panelu
         const redirectPaths = {
