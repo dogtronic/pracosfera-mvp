@@ -325,29 +325,10 @@
         </div>
     </div>
 
+    <script src="../../js/sidebar-loader.js"></script>
     <script>
         // Load Sidebar
-        fetch('../../components/admin/sidebar.html')
-            .then(response => response.text())
-            .then(data => {
-                const container = document.getElementById('sidebarContainer');
-                container.innerHTML = data;
-                
-                // Wykonaj skrypty z załadowanego HTML
-                const scripts = container.querySelectorAll('script');
-                scripts.forEach(script => {
-                    const newScript = document.createElement('script');
-                    newScript.textContent = script.textContent;
-                    document.body.appendChild(newScript);
-                });
-                
-                // Po załadowaniu sidebara, ustaw aktywny link
-                setTimeout(() => {
-                    if (window.setActiveNavLink) {
-                        window.setActiveNavLink();
-                    }
-                }, 100);
-            });
+        loadSidebar('admin');
 
         // Modal functions
         function openAddUserModal() {
